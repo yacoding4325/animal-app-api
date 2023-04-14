@@ -6,8 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="animal-app-api" />
+        <module name="platform-service" />
+        <module name="platform-common" />
+        <module name="platform-interaction" />
+        <module name="platform-repository" />
+        <module name="platform-api-web" />
       </profile>
     </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="animal-app-api" options="" />
+      <module name="platform-api-web" options="-parameters" />
+      <module name="platform-common" options="-parameters" />
+      <module name="platform-interaction" options="-parameters" />
+      <module name="platform-repository" options="-parameters" />
+      <module name="platform-service" options="-parameters" />
+    </option>
   </component>
 </project>
