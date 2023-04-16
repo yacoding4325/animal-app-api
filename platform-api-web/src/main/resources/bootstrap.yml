@@ -1,0 +1,122 @@
+server:
+  type: app
+  port: 9015
+  max-http-header-size: 102400
+  tomcat:
+    max-swallow-size: 500MB #配置tomcat级别的文件上传大小限制
+spring:
+  servlet:
+    context-path:
+    multipart:
+      enabled: true
+      max-file-size: 500MB #最大文件大小
+      max-request-size: 500MB #最大请求大小
+  http:
+    servlet:
+      multipart:
+        max-file-size: 500MB
+        max-request-size: 500MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  aop:
+    auto: false
+  datasource:
+#    driver-class-name: com..cj.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    platform: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 下面为连接池的补充设置，应用到上面所有数据源中
+    # 初始化大小，最小，最大
+    initialSize: 1
+    minIdle: 3
+    maxActive: 20
+    # 配置拿到连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,slf4j
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    # 合并多个DruidDataSource的监控数据
+    #useGlobalDataSourceStat: true
+    druidMonitorUserName: admin
+    druidMonitorPassword: 123456
+    connectionInitSQLs:
+      - set names utf8mb4 #初始化SQL
+  redis:
+    enable: true
+    host: 127.0.0.1
+#    port: 6301
+    port: 6379
+    password:
+    timeout: 120000
+    readTimeout: 120000
+    database: 3
+    lettuce:
+      pool:
+        min-idle: 8
+        max-idle: 500
+        max-active: 2000
+        max-wait: 60000
+mybatis-plus:
+  typeAliasesPackage: cn.common.repository.entity
+  mapper-locations: classpath*:/mapper/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not_empty
+      #驼峰下划线转换
+      column-underline: true
+      #逻辑删除配置
+      logic-delete-value: 1 #删除配置
+      logic-not-delete-value: 2 #未删除配置
+      db-type: mysql
+      table-prefix: t_
+    refresh: false
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志
+pagehelper:
+  helperDialect: mysql
+  reasonable: false #打开此配置，分页查询查询到页数大于最后一页的时候，默认返回最后一页的数据
+  supportMethodsArguments: true
+  params: count=countSql
+aliyun:
+  oss:
+#    secretId: LTAI5tF8EjmXr6jLyXkDXX9R
+#    secretKey: kg4OsKKWl14Kpfcr9RxM2cOqlXONUe
+#    endPoint: oss-cn-chengdu.aliyuncs.com
+#    bucketName:
+#    prefix: https://.oss-cn-chengdu.aliyuncs.com/ #文件固定前缀
+#    folder-prefix: animal-platform #文件夹前缀
+  secretId: LTAI5tN92VAWNTd5HyMuSFta
+  secretKey: IoGTCQYELmvkl69hdZAQNRuny6y9XL
+  endPoint: oss-cn-qingdao.aliyuncs.com
+  bucketName: petservice-dy
+  prefix: https://petservice-dy.oss-cn-qingdao.aliyuncs.com/ #文件固定前缀
+  folder-prefix: animal-platform #文件夹前缀
+logging:
+  level:
+    org.springframework.web: debug
+    com: debug
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ['httptrace', 'metrics']
+baseConstant:
+  constant:
+    tokenValidTime: 1 #TOKEN缓存有效时间

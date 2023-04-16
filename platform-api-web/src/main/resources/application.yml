@@ -1,0 +1,13 @@
+name: animal-app-api
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/animal-platform?useUnicode=true&characterEncoding=utf-8&useSSL=false&tcpRcvBuf=1024000&autoReconnect=true&failOverReadOnly=false&connectTimeout=0&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: yxym
+locationTemp: /Users/singer/data #上传文件的临时目录
+
