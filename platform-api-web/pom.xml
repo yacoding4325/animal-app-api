@@ -13,8 +13,144 @@
     <artifactId>platform-api-web</artifactId>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <project.main.class>cn.common.AnimalAppWebApplication</project.main.class>
+        <!--最终打包名称-->
+        <deploy.package.name>animal-app-api</deploy.package.name>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>AliYunMaven</name>
+            <url>${repository.url}</url>
+            <layout>default</layout>
+            <!-- 是否开启发布版构件下载 -->
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <!-- 是否开启快照版构件下载 -->
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <name>groups</name>
+            <url>${repository.url}</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+    <distributionManagement>
+        <!--<repository>
+            <id>public</id>
+            <name>groups</name>
+            <url>${repository.url}</url>
+        </repository>-->
+    </distributionManagement>
+    <dependencies>
+        <dependency>
+            <groupId>com.platform-service</groupId>
+            <artifactId>platform-service</artifactId>
+            <version>${project.build.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.platform-common</groupId>
+            <artifactId>platform-common</artifactId>
+            <version>${project.build.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.platform-repository</groupId>
+            <artifactId>platform-repository</artifactId>
+            <version>${project.build.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.platform-interaction</groupId>
+            <artifactId>platform-interaction</artifactId>
+        </dependency>
+
+        <!--测试工具-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <!--设置项目最终打包的名称-->
+        <finalName>${deploy.package.name}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.6.3</version>
+                <configuration>
+                    <fork>true</fork>
+                    <maxAttempts>500</maxAttempts>
+                    <includeSystemScope>true</includeSystemScope>
+                    <mainClass>${project.main.class}</mainClass>
+                    <outputDirectory>../</outputDirectory>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>springloaded</artifactId>
+                        <version>1.2.5.RELEASE</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <!--true跳过测试-->
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <!--package.xml的ID不要追加到最终打包的名称-->
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <!--<finalName>${project.artifactId}-${project.build.version}</finalName>-->
+                    <finalName>${deploy.package.name}</finalName>
+                    <outputDirectory>../</outputDirectory>
+                    <descriptors>
+                        <descriptor>src/assembly/package.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

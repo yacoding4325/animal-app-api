@@ -11,10 +11,63 @@
 
     <groupId>com.platform-repository</groupId>
     <artifactId>platform-repository</artifactId>
+    <version>${project.build.version}</version>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>AliYunMaven</name>
+            <url>${repository.url}</url>
+            <layout>default</layout>
+            <!-- 是否开启发布版构件下载 -->
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <!-- 是否开启快照版构件下载 -->
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <name>groups</name>
+            <url>${repository.url}</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <distributionManagement>
+        <!--<repository>
+            <id>public</id>
+            <name>groups</name>
+            <url>${repository.url}</url>
+        </repository>-->
+    </distributionManagement>
+    <dependencies>
+        <dependency>
+            <groupId>com.platform-common</groupId>
+            <artifactId>platform-common</artifactId>
+            <version>${project.build.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.platform-interaction</groupId>
+            <artifactId>platform-interaction</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
