@@ -10,6 +10,7 @@ import cn.common.resp.TokenVerifyResp;
 /**
 * @Description: 系统用户相关服务
 */
+
 public interface AuthUserService {
 
     /**
