@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>animal-app-api</artifactId>
         <groupId>com.animal-app-api</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <packaging>jar</packaging>
-    <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.platform-common</groupId>
+    <name>platform-common</name>
+    <groupId>cn.common</groupId>
     <artifactId>platform-common</artifactId>
     <version>${project.build.version}</version>
-
+    <packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <description>后端系统-common模块</description>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-
     <repositories>
         <repository>
             <id>central</id>
@@ -80,20 +78,20 @@
             <artifactId>aliyun-sdk-oss</artifactId>
             <version>${aliyun-sdk-oss.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <artifactId>platform-interaction</artifactId>-->
-<!--            <groupId>pro.skywalking</groupId>-->
-<!--            <version>0.0.1.PRO</version>-->
-<!--            <scope>system</scope>-->
-<!--            <systemPath>${project.basedir}/src/main/resources/lib/platform-interaction-0.0.1.PRO.jar</systemPath>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <artifactId>platform-common</artifactId>-->
-<!--            <groupId>pro.skywalking</groupId>-->
-<!--            <version>0.0.1.PRO</version>-->
-<!--            <scope>system</scope>-->
-<!--            <systemPath>${project.basedir}/src/main/resources/lib/platform-common-0.0.1.PRO.jar</systemPath>-->
-<!--        </dependency>-->
+        <dependency>
+            <artifactId>platform-interaction</artifactId>
+            <groupId>pro.skywalking</groupId>
+            <version>0.0.1.PRO</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/platform-interaction-0.0.1.PRO.jar</systemPath>
+        </dependency>
+        <dependency>
+            <artifactId>platform-common</artifactId>
+            <groupId>pro.skywalking</groupId>
+            <version>0.0.1.PRO</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/platform-common-0.0.1.PRO.jar</systemPath>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -108,5 +106,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

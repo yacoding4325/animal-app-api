@@ -8,12 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>jar</packaging>
-    <version>${project.build.version}</version>
-
-    <groupId>com.platform-service</groupId>
     <artifactId>platform-service</artifactId>
-
+    <version>${project.build.version}</version>
+    <packaging>jar</packaging>
     <repositories>
         <repository>
             <id>central</id>
@@ -52,12 +49,12 @@
     </distributionManagement>
     <dependencies>
         <dependency>
-            <groupId>com.platform-repository</groupId>
+            <groupId>com.animal-app-api</groupId>
             <artifactId>platform-repository</artifactId>
-            <version>${project.build.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.platform-common</groupId>
+            <groupId>cn.common</groupId>
             <artifactId>platform-common</artifactId>
             <version>${project.build.version}</version>
         </dependency>
@@ -72,9 +69,9 @@
             <version>${guava.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.platform-interaction</groupId>
+            <groupId>com.animal-app-api</groupId>
             <artifactId>platform-interaction</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
 </project>

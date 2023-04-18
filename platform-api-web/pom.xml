@@ -8,16 +8,13 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.animal-app-web</groupId>
     <artifactId>platform-api-web</artifactId>
-
+    <version>${project.build.version}</version>
     <properties>
         <project.main.class>cn.common.AnimalAppWebApplication</project.main.class>
         <!--最终打包名称-->
         <deploy.package.name>animal-app-api</deploy.package.name>
     </properties>
-
     <repositories>
         <repository>
             <id>central</id>
@@ -56,35 +53,31 @@
     </distributionManagement>
     <dependencies>
         <dependency>
-            <groupId>com.platform-service</groupId>
+            <groupId>com.animal-app-api</groupId>
             <artifactId>platform-service</artifactId>
-            <version>${project.build.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
         <dependency>
-            <groupId>com.platform-common</groupId>
+            <groupId>cn.common</groupId>
             <artifactId>platform-common</artifactId>
-            <version>${project.build.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
         <dependency>
-            <groupId>com.platform-repository</groupId>
+            <groupId>com.animal-app-api</groupId>
             <artifactId>platform-repository</artifactId>
-            <version>${project.build.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
         <dependency>
-            <groupId>com.platform-interaction</groupId>
+            <groupId>com.animal-app-api</groupId>
             <artifactId>platform-interaction</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
         <!--测试工具-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -152,5 +145,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

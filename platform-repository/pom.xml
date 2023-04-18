@@ -8,17 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.platform-repository</groupId>
     <artifactId>platform-repository</artifactId>
     <version>${project.build.version}</version>
     <packaging>jar</packaging>
-
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
-
     <repositories>
         <repository>
             <id>central</id>
@@ -35,7 +27,6 @@
             </snapshots>
         </repository>
     </repositories>
-
     <pluginRepositories>
         <pluginRepository>
             <id>public</id>
@@ -49,7 +40,6 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-
     <distributionManagement>
         <!--<repository>
             <id>public</id>
@@ -59,15 +49,14 @@
     </distributionManagement>
     <dependencies>
         <dependency>
-            <groupId>com.platform-common</groupId>
+            <groupId>cn.common</groupId>
             <artifactId>platform-common</artifactId>
             <version>${project.build.version}</version>
         </dependency>
-
         <dependency>
-            <groupId>com.platform-interaction</groupId>
+            <groupId>com.animal-app-api</groupId>
             <artifactId>platform-interaction</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
 </project>

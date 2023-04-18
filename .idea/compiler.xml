@@ -16,7 +16,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="animal-app-api" options="" />
+      <module name="animal-app-api" options="-parameters" />
       <module name="platform-api-web" options="-parameters" />
       <module name="platform-common" options="-parameters" />
       <module name="platform-interaction" options="-parameters" />
